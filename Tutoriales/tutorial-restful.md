@@ -46,14 +46,15 @@ Los decoradores y pipes se utilizan para agregar funcionalidades adicionales a l
 
 Asegúrate de tener Node.js y npm instalados en tu sistema. Luego, crea un nuevo proyecto Nest.js utilizando el CLI de Nest.js:
 
-``` bash
+```bash
 nest new nest-rest-api
 ```
+
 ### **Paso 2:** Definición del modelo de datos
 
 Crea un modelo de datos para representar las publicaciones en tu API. Por ejemplo, en src/posts/post.model.ts:
 
-``` ts
+```ts
 import { Schema, Document } from 'mongoose';
 
 export interface Post extends Document {
@@ -69,11 +70,12 @@ export const PostSchema = new Schema<Post>(
   { timestamps: true },
 );
 ```
+
 ### **Paso 3:** Creación del servicio de publicaciones
 
 Crea un servicio para manejar la lógica de negocio relacionada con las publicaciones. En src/posts/posts.service.ts:
 
-``` ts
+```ts
 import { Injectable } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
@@ -86,12 +88,21 @@ export class PostsService {
   // Implementa métodos para obtener, crear, actualizar y eliminar publicaciones
 }
 ```
+
 #### **Paso 4:** Creación del controlador de publicaciones
 
 Crea un controlador para definir los endpoints de la API relacionados con las publicaciones. En src/posts/posts.controller.ts:
 
-``` ts
-import { Controller, Get, Post, Put, Delete, Param, Body } from '@nestjs/common';
+```ts
+import {
+  Controller,
+  Get,
+  Post,
+  Put,
+  Delete,
+  Param,
+  Body,
+} from '@nestjs/common';
 import { PostsService } from './posts.service';
 
 @Controller('posts')
@@ -101,11 +112,12 @@ export class PostsController {
   // Implementa métodos para los endpoints GET, POST, PUT y DELETE
 }
 ```
+
 ### **Paso 5:** Configuración del módulo de publicaciones
 
 Configura el módulo de Nest.js para importar el modelo de datos y los controladores. En src/posts/posts.module.ts:
 
-``` ts
+```ts
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { PostsController } from './posts.controller';
@@ -119,11 +131,12 @@ import { PostSchema } from './post.model';
 })
 export class PostsModule {}
 ```
+
 ### **Paso 6:** Prueba de la API
 
 Inicia el servidor Nest.js y prueba los endpoints de la API utilizando herramientas como Postman o cURL.
 
-``` bash
+```bash
 npm run start:dev
 ```
 

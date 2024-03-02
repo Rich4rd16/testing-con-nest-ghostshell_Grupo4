@@ -4,9 +4,10 @@
 
 Primero, necesitaremos instalar la CLI de NestJS globalmente. Puedes hacerlo ejecutando el siguiente comando en tu terminal:
 
-``` bash
+```bash
 npx -p @nestjs/cli nest new blog-personal-nest
 ```
+
 Esto creará un nuevo proyecto de NestJS llamado blog-personal-nest.
 
 ## Paso 2: Creación del Modelo
@@ -22,11 +23,12 @@ export interface Post {
   content: string;
 }
 ```
+
 ## Paso 3: Creación del Controlador
 
 Crea un archivo llamado posts.controller.ts en el directorio src/posts y agrega el siguiente código:
 
-``` typescript
+```typescript
 // src/posts/posts.controller.ts
 
 import { Controller, Get } from '@nestjs/common';
@@ -44,7 +46,7 @@ export class PostsController {
 
 Crea un archivo llamado posts.service.ts en el directorio src/posts y agrega el siguiente código:
 
-``` typescript
+```typescript
 // src/posts/posts.service.ts
 
 import { Injectable } from '@nestjs/common';
@@ -64,7 +66,7 @@ export class PostsService {
 
 Modifica el archivo posts.module.ts en el directorio src/posts y agrega el siguiente código:
 
-``` typescript
+```typescript
 // src/posts/posts.module.ts
 
 import { Module } from '@nestjs/common';
@@ -82,7 +84,7 @@ export class PostsModule {}
 
 Abre el archivo app.module.ts en el directorio src y modifícalo de la siguiente manera:
 
-``` typescript
+```typescript
 // src/app.module.ts
 
 import { Module } from '@nestjs/common';
@@ -98,10 +100,11 @@ export class AppModule {}
 
 Ejecuta la aplicación con el siguiente comando en tu terminal:
 
-``` bash
+```bash
 cd blog-personal-nest
 npx nest start --watch
 ```
+
 Esto iniciará el servidor de desarrollo de NestJS y automáticamente reiniciará cuando se realicen cambios en el código.
 
 ## Paso 8: Probar la Aplicación
@@ -121,4 +124,3 @@ Puedes probar la aplicación accediendo a `http://localhost:3000/posts` en tu na
 **Inyección de Dependencias:** En el Paso 5 del tutorial, se muestra cómo Nest.js utiliza la inyección de dependencias para proporcionar el servicio `PostsService` al controlador `PostsController` a través del módulo `PostsModule` en el archivo `posts.module.ts`.
 
 ¡Y eso es todo! Ahora tienes un proyecto básico de blog personal desarrollado con NestJS. Puedes seguir añadiendo funcionalidades como la creación, actualización y eliminación de publicaciones según tus necesidades.
-

@@ -1,8 +1,8 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/Z9nUSplb)
+
 # Blog Personal Nest
 
 ![Blog Personal Nest](img/image.png)
-
 
 Este es un proyecto de blog personal desarrollado con NestJS.
 
@@ -12,7 +12,7 @@ Este es un proyecto de blog personal desarrollado con NestJS.
 
 ## Tutorial
 
-<p style="text-align: justify">Si deseas aprender a implementar autenticación en un blog personal con NestJS, te invitamos a seguir el tutorial en el siguiente enlace: </p> 
+<p style="text-align: justify">Si deseas aprender a implementar autenticación en un blog personal con NestJS, te invitamos a seguir el tutorial en el siguiente enlace: </p>
 
 - [**Tutorial:** Implementación de un Blog Personal con Nest.js](/Tutoriales/tutorial.md)
 
@@ -68,7 +68,7 @@ Este es un proyecto de blog personal desarrollado con NestJS.
 
 <!-- ## Autenticación
 
-Para proteger las rutas y los recursos, se ha implementado la autenticación mediante tokens JWT (JSON Web Tokens). 
+Para proteger las rutas y los recursos, se ha implementado la autenticación mediante tokens JWT (JSON Web Tokens).
 
 Debes obtener un token de acceso enviando una solicitud POST a `/auth/login` con las credenciales de usuario. Luego, incluye este token en la cabecera Authorization de tus solicitudes HTTP utilizando el esquema Bearer. -->
 

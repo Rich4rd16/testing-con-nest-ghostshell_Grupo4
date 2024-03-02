@@ -35,7 +35,7 @@ export interface User {
 
 Crea un archivo llamado auth.controller.ts en el directorio src/auth y agrega el siguiente código:
 
-``` ts
+```ts
 // auth.controller.ts
 
 import { Controller, Post, Body } from '@nestjs/common';
@@ -52,11 +52,12 @@ export class AuthController {
   }
 }
 ```
+
 ## Paso 5: Implementación del Servicio de Autenticación
 
 Crea un archivo llamado auth.service.ts en el directorio src/auth y agrega el siguiente código:
 
-``` ts
+```ts
 // auth.service.ts
 
 import { Injectable, UnauthorizedException } from '@nestjs/common';
@@ -102,7 +103,7 @@ export class AuthService {
 
 Crea un archivo llamado login.dto.ts en el directorio src/auth/dto y agrega el siguiente código:
 
-``` ts
+```ts
 // login.dto.ts
 
 export class LoginDto {
@@ -114,14 +115,13 @@ export class LoginDto {
     this.password = password;
   }
 }
-
 ```
 
 ## Paso 7: Configuración del Módulo de Autenticación
 
 Modifica el archivo auth.module.ts en el directorio src/auth y agrega el siguiente código:
 
-``` ts
+```ts
 // auth.module.ts
 
 import { Module } from '@nestjs/common';
@@ -140,14 +140,13 @@ import { AuthController } from './auth.controller';
   providers: [AuthService],
 })
 export class AuthModule {}
-
 ```
 
 ## Paso 8: Modificación del Módulo Principal
 
 Abre el archivo app.module.ts en el directorio src y modifícalo para importar el módulo de autenticación:
 
-``` ts
+```ts
 import { Module } from '@nestjs/common';
 import { AuthModule } from './auth/auth.module';
 import { PostsModule } from './posts/posts.module'; // Importa el módulo de posts
@@ -156,29 +155,30 @@ import { PostsModule } from './posts/posts.module'; // Importa el módulo de pos
   imports: [AuthModule, PostsModule], // Importa tanto el módulo de autenticación como el módulo de posts
 })
 export class AppModule {}
-
 ```
 
 ## Paso 9: Ejecutar la Aplicación
 
 Ejecuta la aplicación con el siguiente comando en tu terminal:
 
-``` bash
+```bash
 cd blog-personal-nest
 npm run start:dev
 ```
+
 Esto iniciará el servidor de desarrollo de NestJS y automáticamente reiniciará cuando se realicen cambios en el código.
 
 ## Paso 10: Probar la Autenticación
 
 Utiliza una herramienta como Postman o Insomnia para enviar una solicitud POST a [http://localhost:3000/auth/login](http://localhost:3000/auth/login) con el siguiente cuerpo JSON:
 
-``` json
+```json
 {
   "username": "tu_usuario",
   "password": "tu_contraseña"
 }
 ```
+
 Deberías recibir un token JWT como respuesta si las credenciales son válidas.
 
 Si esto funciona correctamente, ¡has implementado la autenticación en tu blog personal utilizando NestJS!
@@ -193,7 +193,7 @@ En la sección de Autenticación, selecciona Bearer Token y pega el token que re
 
 Ejemplo de autorización con el token JWT:
 
-``` token
+```token
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzdWFyaW8iLCJpYXQiOjE3MDgzMjQ4NjMsImV4cCI6MTcwODMyODQ2M30.D6qsABp9OWrbiBCGqUBUmGjtzuVfmNwJi4B9JXlDemM
 ```
 

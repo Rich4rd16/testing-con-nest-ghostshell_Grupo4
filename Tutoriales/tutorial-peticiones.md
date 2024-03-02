@@ -4,8 +4,7 @@
 
 Si no tenemos modelos definidos, podemos crearlos en archivos como post.model.ts y request-log.model.ts para definir la estructura de nuestros datos.
 
-
-``` ts
+```ts
 // post.model.ts:
 
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
@@ -23,7 +22,7 @@ export class Post extends Document {
 export const PostSchema = SchemaFactory.createForClass(Post);
 ```
 
-``` ts
+```ts
 // request-log.model.ts:
 
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
@@ -55,12 +54,12 @@ export class RequestLog extends Document {
 
 export const RequestLogSchema = SchemaFactory.createForClass(RequestLog);
 ```
+
 ## Paso 2: Crear los servicios
 
 En los archivos posts.service.ts y request-log.service.ts, implementaremos la lógica para interactuar con la base de datos y manejar las solicitudes entrantes.
 
-
-``` ts
+```ts
 //posts.service.ts:
 
 import { Injectable } from '@nestjs/common';
@@ -95,7 +94,7 @@ export class PostsService {
 }
 ```
 
-``` ts
+```ts
 //request-log.service.ts:
 
 import { Injectable } from '@nestjs/common';
@@ -105,7 +104,9 @@ import { RequestLog } from './request-log.model';
 
 @Injectable()
 export class RequestLogService {
-  constructor(@InjectModel(RequestLog.name) private requestLogModel: Model<RequestLog>) {}
+  constructor(
+    @InjectModel(RequestLog.name) private requestLogModel: Model<RequestLog>,
+  ) {}
 
   async findAll(): Promise<RequestLog[]> {
     return this.requestLogModel.find().exec();
@@ -121,7 +122,9 @@ export class RequestLogService {
   }
 
   async update(id: string, requestLog: RequestLog): Promise<RequestLog> {
-    return this.requestLogModel.findByIdAndUpdate(id, requestLog, { new: true }).exec();
+    return this.requestLogModel
+      .findByIdAndUpdate(id, requestLog, { new: true })
+      .exec();
   }
 
   async delete(id: string): Promise<RequestLog> {
@@ -129,6 +132,7 @@ export class RequestLogService {
   }
 }
 ```
+
 ## Paso 3: Implementar los controladores
 
 En los archivos posts.controller.ts y request-log.controller.ts, definiremos los puntos finales de la API y conectaremos las solicitudes HTTP entrantes a los métodos correspondientes en nuestros servicios.

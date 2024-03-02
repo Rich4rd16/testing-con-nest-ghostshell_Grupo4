@@ -10,7 +10,7 @@ Antes de comenzar, asegúrate de tener instalado Docker y Docker Compose en tu s
 
 El primer paso es crear un archivo Dockerfile en la raíz de tu proyecto. Este archivo contendrá las instrucciones necesarias para construir una imagen Docker de tu aplicación Nest.js. Aquí tienes un ejemplo de cómo podría ser un Dockerfile básico para una aplicación Nest.js:
 
-``` Dockerfile
+```Dockerfile
 # Usa una imagen base de Node.js
 FROM node:latest
 
@@ -32,13 +32,14 @@ EXPOSE 3000
 # Comando para ejecutar la aplicación cuando el contenedor se inicie
 CMD ["npm", "start"]
 ```
+
 Este archivo Dockerfile instalará las dependencias de tu aplicación, copiará el código fuente de tu proyecto y expondrá el puerto 3000 para que la aplicación Nest.js pueda ser accesible desde fuera del contenedor.
 
 ## **Paso 3:** Configuración de Docker Compose
 
 A continuación, crearemos un archivo docker-compose.yml en la raíz de nuestro proyecto. Este archivo nos permitirá definir y ejecutar servicios Docker, en este caso, nuestra aplicación Nest.js. Aquí tienes un ejemplo de cómo podría ser un archivo docker-compose.yml básico:
 
-``` yaml
+```yaml
 version: '3.8'
 
 services:
@@ -47,7 +48,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - '3000:3000'
     environment:
       - NODE_ENV=development
     volumes:
@@ -58,7 +59,7 @@ services:
   mongodb:
     image: mongo
     ports:
-      - "27017:27017"
+      - '27017:27017'
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=example
@@ -78,13 +79,14 @@ Este archivo de Docker Compose define un servicio llamado app que construye la i
 
 Una vez que hayas creado los archivos Dockerfile y docker-compose.yml, puedes construir y ejecutar los contenedores Docker utilizando los siguientes comandos:
 
-``` bash
+```bash
 # Construye los contenedores
 docker-compose build
 
 # Inicia los contenedores
 docker-compose up
 ```
+
 Estos comandos construirán la imagen de Docker de tu aplicación Nest.js y luego iniciarán el contenedor. Una vez que el contenedor esté en funcionamiento, podrás acceder a tu aplicación Nest.js a través del puerto 3000 en tu navegador web.
 
 ¡Y eso es todo! Has implementado con éxito Docker y Docker Compose en tu blog personal desarrollado con Nest.js. Ahora tu aplicación es fácilmente distribuible y ejecutable en cualquier entorno compatible con Docker.

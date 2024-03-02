@@ -15,10 +15,21 @@ describe('AppController (e2e)', () => {
     await app.init();
   });
 
-  it('/ (GET)', () => {
+  it('/posts (GET)', () => {
     return request(app.getHttpServer())
-      .get('/')
+      .get('/posts')
       .expect(200)
-      .expect('Hello World!');
+      .expect((response) => {
+        // Verificar que la respuesta sea una matriz
+        expect(Array.isArray(response.body)).toBe(true);
+
+        // Verificar que al menos un post esté presente
+        expect(response.body.length).toBeGreaterThan(0);
+
+        // Verificar que cada post tenga propiedades esperadas
+        const post = response.body[0];
+        expect(post).toHaveProperty('title');
+        expect(post).toHaveProperty('content');
+      });
   });
 });
